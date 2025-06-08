@@ -1,4 +1,4 @@
-1. Autor/i projekta: Belma Đelilović i Ajla Brdarević
+1. Autor/i projekta:
 2. Opis projekta
 3. Opis dataseta
 4. Opis problema
