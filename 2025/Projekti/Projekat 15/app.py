@@ -54,3 +54,7 @@ X, y = create_sequences(data, target_column, WINDOW_SIZE)
 
 print("X dtype:", X.dtype, "shape:", X.shape)
 print("y dtype:", y.dtype, "shape:", y.shape)
+
+split = int(0.8 * len(X))
+X_train, X_test = X[:split], X[split:]
+y_train, y_test = y[:split], y[split:]
