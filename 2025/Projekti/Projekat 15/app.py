@@ -4,6 +4,9 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
+from sklearn.metrics import mean_absolute_error
 
 DATA_PATH = r"C:/Users/ZIRA/Desktop/MASTER/RP/mahir"
 CITY = "New York"
@@ -89,3 +92,19 @@ def invert_scale(pred_scaled, y_scaled, scaler, feature_name, numerical_cols):
     return inv_pred, inv_y
 
 pred_inv, y_test_inv = invert_scale(pred, y_test, scaler, target_column, numerical_cols)
+
+# koliko model pogriješi bez obzira na smjer greške (+- X celzijusa) - uzima apsolutnu vrijednost
+mae = mean_absolute_error(y_test_inv, pred_inv)
+print(f"MAE: {mae:.2f}")
+
+# ista stvar kao iznad, samo sto ovdje se kvadriraju greske - veća osjetljivost na greške
+rmse = np.sqrt(mean_squared_error(y_test_inv, pred_inv))
+print(f"Temperature RMSE: {rmse:.2f}")
+
+# Prikaz rezultata
+plt.figure(figsize=(14, 5))
+plt.plot(y_test_inv[:500], label='Prava temperatura')
+plt.plot(pred_inv[:500], label='Predviđena temperatura')
+plt.title("Predikcija temperature")
+plt.legend()
+plt.show()
