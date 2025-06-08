@@ -38,6 +38,7 @@ data = pd.get_dummies(data, columns=["weather_description"])
 data = data.fillna(0)
 
 data = data.astype(np.float32)
+data["temperature"] = data["temperature"] - 273.15 # transformacija u celzijuse (lakše)
 
 numerical_cols = [col for col in data.columns if not col.startswith("weather_description_")]
 scaler = MinMaxScaler()
