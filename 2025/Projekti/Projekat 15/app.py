@@ -75,3 +75,17 @@ model.compile(optimizer='adam', loss='mse')
 model.fit(X_train, y_train, epochs=20, batch_size=64, validation_split=0.1)
 
 pred = model.predict(X_test)
+
+numerical_cols = [col for col in data.columns if not col.startswith("weather_description_")]
+
+def invert_scale(pred_scaled, y_scaled, scaler, feature_name, numerical_cols):
+    idx = numerical_cols.index(feature_name)
+    pred_padded = np.zeros((len(pred_scaled), len(numerical_cols)))
+    y_padded = np.zeros((len(y_scaled), len(numerical_cols)))
+    pred_padded[:, idx] = pred_scaled.flatten()
+    y_padded[:, idx] = y_scaled.flatten()
+    inv_pred = scaler.inverse_transform(pred_padded)[:, idx]
+    inv_y = scaler.inverse_transform(y_padded)[:, idx]
+    return inv_pred, inv_y
+
+pred_inv, y_test_inv = invert_scale(pred, y_test, scaler, target_column, numerical_cols)
