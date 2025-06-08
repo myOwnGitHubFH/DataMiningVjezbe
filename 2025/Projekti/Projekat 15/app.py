@@ -2,6 +2,8 @@ import os
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense, Dropout
 
 DATA_PATH = r"C:/Users/ZIRA/Desktop/MASTER/RP/mahir"
 CITY = "New York"
@@ -58,3 +60,18 @@ print("y dtype:", y.dtype, "shape:", y.shape)
 split = int(0.8 * len(X))
 X_train, X_test = X[:split], X[split:]
 y_train, y_test = y[:split], y[split:]
+
+
+model = Sequential([
+    LSTM(128, return_sequences=True, input_shape=(WINDOW_SIZE, X.shape[2])),
+    Dropout(0.3),
+    LSTM(64),
+    Dropout(0.3),
+    Dense(32, activation='relu'),
+    Dense(1) 
+])
+
+model.compile(optimizer='adam', loss='mse')
+model.fit(X_train, y_train, epochs=20, batch_size=64, validation_split=0.1)
+
+pred = model.predict(X_test)
