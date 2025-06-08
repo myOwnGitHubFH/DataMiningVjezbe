@@ -79,8 +79,6 @@ model.fit(X_train, y_train, epochs=20, batch_size=64, validation_split=0.1)
 
 pred = model.predict(X_test)
 
-numerical_cols = [col for col in data.columns if not col.startswith("weather_description_")]
-
 def invert_scale(pred_scaled, y_scaled, scaler, feature_name, numerical_cols):
     idx = numerical_cols.index(feature_name)
     pred_padded = np.zeros((len(pred_scaled), len(numerical_cols)))
