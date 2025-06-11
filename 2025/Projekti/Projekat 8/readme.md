@@ -5,7 +5,7 @@
 **Predmet: Rudarenje podataka**
 **Profesor: doc. dr. Adnan Dželihodžić**
 **Asistenti: mr. Faris Hambo, mr. Ahmed Mujić**
-**Student: Ajla Huskić**
+**Student: Ajla Huskić, II-133**
 **Studij: Softversko inženjerstvo, II ciklus studija**
 **Zenica, juni 2025.**
 
