@@ -1,5 +1,8 @@
 1. Autori projekta: Belma Đelilović i Ajla Brdarević
-2. Opis projekta
+   
+2. Opis projekta:
+U ovom radu fokusiramo se na implementaciju naprednih regresionih modela, konkretno Random Forest Regressor i XGBoost Regressor, s ciljem tačne procjene tržišne vrijednosti kuća. Pristup uključuje sve korake profesionalnog ML procesa: od učitavanja i skaliranja unaprijed obrađenih podataka, preko podjele na trening i validacione skupove, do evaluacije modela i poređenja njihovih performansi korištenjem ključnih metrika kao što su RMSE, MAE, RMSLE i R². Modeli su dodatno optimizovani pomoću GridSearchCV, a njihova interpretabilnost je poboljšana vizualizacijom značajnosti obilježja, kako bismo razumjeli koji faktori najviše utiču na cijenu kuće. Na kraju, kreiramo i jednostavni ansambl model koji kombinuje predikcije oba algoritma, u cilju postizanja još boljih performansi.
+
 3. Opis dataseta
 
 SalePrice - the property's sale price in dollars. This is the target variable that we're trying to predict.
@@ -527,7 +530,17 @@ SaleCondition: Condition of sale
        Alloca	Allocation - two linked properties with separate deeds, typically condo with a garage unit	
        Family	Sale between family members
        Partial	Home was not completed when last assessed (associated with New Homes)
-4. Opis problema
-5. Opis algoritma
-6. Metode koristene za poboljasanje algoritma
-7. Rezultati i njhova interpretacija
+       
+4. Opis problema:
+
+5. Opis algoritma:
+U cilju predviđanja cijena nekretnina korišteni su nadzirani algoritmi mašinskog učenja koji su se pokazali efikasnim u regresionim problemima, gdje je cilj predvidjeti numeričku vrijednost cijene na osnovu relevantnih karakteristika nekretnina. S obzirom na kompleksnost problema i značajne varijacije u podacima (poput lokacije, veličine, godišta i stanja nekretnine), odabrani su algoritmi koji mogu precizno modelirati nelinearne odnose i interakcije između obilježja.
+Detaljno su opisani korišteni algoritmi – Random Forest Regressor, XGBoost Regressor i Ansambl model – sa fokusom na njihove tehničke karakteristike, način rada te razloge zbog kojih su pogodni za rješavanje problema regresije u kontekstu predviđanja cijena nekretnina. Svaki od ovih algoritama ima svoje prednosti, od robusnosti Random Foresta, preko visoke preciznosti XGBoosta, do poboljšane generalizacije Ansambl modela.
+Glavni aspekti koji su razmatrani pri odabiru algoritama uključuju njihovu sposobnost obrade velikog broja obilježja, otpornost na šum u podacima i mogućnost interpretacije rezultata, što je od posebnog značaja za donosioce odluka u domenu nekretnina.
+   
+7. Metode koristene za poboljasanje algoritma:
+U okviru eksperimentisanja s modelima, tokom evaluacije performansi Random Forest i XGBoost regresora, uočeno je da svaki od njih pokazuje specifične prednosti u različitim aspektima problema. Random Forest se pokazao robusnijim u generalizaciji i detekciji šireg spektra obrazaca, dok je XGBoost bio precizniji u hvatanju lokalnih varijacija u podacima, što je bilo posebno korisno kod nelinearnih odnosa i izraženih anomalija u cijenama.
+Na osnovu tih opažanja, došlo se do ideje da se konstruiše jednostavan ansambl model, koji kombinuje predikcije oba algoritma. Ova kombinacija, ostvarena putem prostog prosjeka predikcija, ima za cilj da iskoristi komplementarne prednosti oba pristupa – stabilnost i otpornost Random Foresta, te sposobnost XGBoosta da iterativno poboljšava tačnost kroz korekciju grešaka.
+
+8. Rezultati i njhova interpretacija:
+  
